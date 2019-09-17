@@ -41,7 +41,7 @@ Link do [Repositório](http://192.168.4.237:8081/nexus/ "Nexus").
 Link da ferramenta de [Integração Contínua](http://192.168.4.237:8080 "Jenkins").
 
 
-![SIMH-F](https://simhspms.github.io/SIMHF_REPO/img/simhfLogo.png)
+![SIMH-FORMACAO](https://simhspms.github.io/SIMH_REPO/img/simhfLogo.png)
 
 Página auxiliar do projeto SIMH-FORMACAO
 
