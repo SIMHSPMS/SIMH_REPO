@@ -53,6 +53,10 @@ Link do [SIMH-FORMACAO](http://192.168.103.138:7001/SIMH_FORMACAO/ "SIMH-FORMACA
 
 Link do [SIMH-FORMACAO BackOffice](http://192.168.103.138:7001/SIMH_FORMACAO_BKO/ "SIMH-FORMACAO BKO").
 
+### QLT
 
+Link do [SIMH-FORMACAO](http://simhf-qa-app01.dc.min-saude.pt:7003/SIMH_FORMACAO/ "SIMH-FORMACAO").
+
+Link do [SIMH-FORMACAO BackOffice](http://simhf-qa-app01.dc.min-saude.pt:7003/SIMH_FORMACAO_BKO/ "SIMH-FORMACAO BKO").
 
 ![SPMS](https://simhspms.github.io/SIMH_REPO/img/spmsLogo.png)
