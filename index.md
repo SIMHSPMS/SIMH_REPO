@@ -32,6 +32,8 @@ Link do [SIMH](http://simh.min-saude.pt/SIMH/ "SIMH").
 
 Link do [SIMH BackOffice](http://simh.min-saude.pt/SIMH_BKO/ "SIMH BKO").
 
+### --------------------------------------------------------------------------------------------
+
 ## Repositório de versões
 
 Link do [Repositório](http://192.168.4.237:8081/nexus/ "Nexus").
@@ -40,6 +42,7 @@ Link do [Repositório](http://192.168.4.237:8081/nexus/ "Nexus").
 
 Link da ferramenta de [Integração Contínua](http://192.168.4.237:8080 "Jenkins").
 
+### --------------------------------------------------------------------------------------------
 
 ![SIMH-FORMACAO](https://simhspms.github.io/SIMH_REPO/img/simhfLogo.png)
 
