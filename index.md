@@ -64,8 +64,8 @@ Link do [SIMH-FORMACAO BackOffice](http://simhf-qa-app01.dc.min-saude.pt:7003/SI
 
 ### PRD
 
-Link do [SIMH-FORMACAO](http://10.202.20.69:7003/SIMH_FORMACAO/ "SIMH-FORMACAO").
+Link do [SIMH-FORMACAO](http://simhf-prod-app01.dc.min-saude.pt:7003/SIMH_FORMACAO/ "SIMH-FORMACAO").
 
-Link do [SIMH-FORMACAO BackOffice](http://10.202.20.69:7003/SIMH_FORMACAO_BKO/ "SIMH-FORMACAO BKO").
+Link do [SIMH-FORMACAO BackOffice](http://simhf-prod-app01.dc.min-saude.pt:7003/SIMH_FORMACAO_BKO/ "SIMH-FORMACAO BKO").
 
 ![SPMS](https://simhspms.github.io/SIMH_REPO/img/spmsLogo.png)
