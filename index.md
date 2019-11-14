@@ -66,6 +66,6 @@ Link do [SIMH-FORMACAO BackOffice](http://simhf-qa-app01.dc.min-saude.pt:7003/SI
 
 Link do [SIMH-FORMACAO](https://simh-formacao.min-saude.pt "SIMH-FORMACAO").
 
-Link do [SIMH-FORMACAO BackOffice](https://simh-formacao.min-saude.pt/SIMH_FORMACAO_BKO/ "SIMH-FORMACAO BKO").
+Link do [SIMH-FORMACAO BackOffice](http://simhf-prod-app01.dc.min-saude.pt:7003/SIMH_FORMACAO_BKO "SIMH-FORMACAO BKO").
 
 ![SPMS](https://simhspms.github.io/SIMH_REPO/img/spmsLogo.png)
