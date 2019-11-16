@@ -58,9 +58,9 @@ Link do [SIMH-FORMACAO BackOffice](http://192.168.103.138:7001/SIMH_FORMACAO_BKO
 
 ### QLT
 
-Link do [SIMH-FORMACAO](http://simhf-qa-app01.dc.min-saude.pt:7003/SIMH_FORMACAO/ "SIMH-FORMACAO").
+Link do [SIMH-FORMACAO](https://simh-formacao-qa.min-saude.pt/SIMH_FORMACAO/ "SIMH-FORMACAO").
 
-Link do [SIMH-FORMACAO BackOffice](http://simhf-qa-app01.dc.min-saude.pt:7003/SIMH_FORMACAO_BKO/ "SIMH-FORMACAO BKO").
+Link do [SIMH-FORMACAO BackOffice](https://simh-formacao-qa.min-saude.pt/SIMH_FORMACAO_BKO/ "SIMH-FORMACAO BKO").
 
 ### PRD
 
