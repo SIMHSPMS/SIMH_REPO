@@ -28,9 +28,9 @@ Link do [SIMH BackOffice](https://simh-qa.min-saude.pt/SIMH_BKO/ "SIMH BKO").
 
 ### PRD
 
-Link do [SIMH](http://simh.min-saude.pt/SIMH/ "SIMH").
+Link do [SIMH](https://simh.min-saude.pt "SIMH").
 
-Link do [SIMH BackOffice](http://simh.min-saude.pt/SIMH_BKO/ "SIMH BKO").
+Link do [SIMH BackOffice](https://simh.min-saude.pt/SIMH_BKO/ "SIMH BKO").
 
 ### ------------------------------------------------------------------------------------------------------------------------------------
 
