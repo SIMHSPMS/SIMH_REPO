@@ -37,10 +37,7 @@ Link do [SIMH BackOffice](https://simh.min-saude.pt/SIMH_BKO/ "SIMH BKO").
 ## Repositório de versões
 
 Link do [Repositório](http://192.168.4.237:8081/nexus/ "Nexus").
-
-<p style="text-align:center;"><a href="http://192.168.4.237:8081/nexus/" target="new">
-  <img src="https://simhspms.github.io/SIMH_REPO/img/nexus200x50.png" border="0" alt="Welcome to the Sonatype Nexus Maven Repository Manager"></a>
-</p>
+![NEXUS](https://simhspms.github.io/SIMH_REPO/img/nexus200x50.png)
 
 ## Integração contínua dos projetos
 
