@@ -1,144 +1,1207 @@
 <!DOCTYPE html>
-<!-- saved from url=(0037)https://simhspms.github.io/SIMH_REPO/ -->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <meta name="author" content="SIMH">
-   <link rel="shortcut icon" type="image/png" href="./img/simhIcon.png">
-   <title>SIMH Index</title>
-   <link href="http://feeds.feedburner.com/tom-preston-werner" rel="alternate" title="Tom Preston-Werner" type="application/atom+xml">
-   <meta name="readability-verification" content="QCzSs992GxmRYRKVpPeZ6LE2tS8aYKxsSSQKV8YM">
-   
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+<html>
+	<head>
+		<meta name="author" content="SIMH" />
+		<link rel="shortcut icon" type="image/png" href="./img/simhIcon.png" />
+		<title>SIMH Index</title>
+		<link href="http://feeds.feedburner.com/tom-preston-werner" rel="alternate" title="Tom Preston-Werner" type="application/atom+xml" />
+		<meta name="readability-verification" content="QCzSs992GxmRYRKVpPeZ6LE2tS8aYKxsSSQKV8YM" />
+		<link rel="stylesheet" href="./css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="./css/jquery.dataTables.min.css" />
+		<style>
+			     body {
 
-   <style>
-		body {
-			margin-left: 20%; 
-			margin-right: 20%; 
-			text-align:center;
-	    }
+			     		text-align:center;
+			     }
 
-		img[alt="SIMH"] {
-			width: 50%;
-			margin:auto;
-		}
-		
-		img[alt="SIMH-FORMACAO"] {
-			width: 63%;
-			margin:auto;
-		}
-		
-		
-		s{
-			color:lightgrey;
-		}
-   </style>
- 
-</head>
-<body cz-shortcut-listen="true">
-		<div class="row" style="margin-top: 15px;">
-			<div class="col">
-				<div class="card shadow-sm p-3 mb-5 bg-white rounded " style="box-shadow: 0 .325rem .45rem #005387!important;"> 
-					<p><img src="./img/simhLogo.png" alt="SIMH"></p>
-					
-					<h4 id="links-dos-ambientes">Links dos ambientes</h4>
-					
-					<div style="margin: 20px 20px 20px 20px;">
-						<h5 id="ci">CI</h5>
-						<a target="_blank" href="http://10.204.1.120:8001/SIMH/" title="SIMH">SIMH</a><br>
-						<a target="_blank" href="http://10.204.1.120:8001/SIMH_BKO/" title="SIMH BKO">SIMH BackOffice</a>
-					</div>
+			     	  img[alt="SIMH"] {
+			     			width: 50%;
+			     			margin:auto;
+			     		}
 
-					<div style="margin: 20px 20px 20px 20px;">
-						<h5 id="dev">DEV</h5>
-						<a target="_blank" href="http://10.204.1.120:7001/SIMH/" title="SIMH">SIMH</a><br>
-						<a target="_blank" href="http://10.204.1.120:7001/SIMH_BKO/" title="SIMH BKO">SIMH BackOffice</a>
+			     		img[alt="SIMH-FORMACAO"] {
+			     			width: 63%;
+			     			margin:auto;
+			     		}
+
+
+			     		s{
+			     			color:lightgrey;
+			     		}
+
+			     /* Style the tab */
+			     .tab {
+			       overflow: hidden;
+			       border: 1px solid #ccc;
+			       background-color: #005285;
+			     }
+
+			     /* Style the buttons inside the tab */
+			     .tab button {
+			       background-color: inherit;
+			       float: left;
+			       border: none;
+			       outline: none;
+			       cursor: pointer;
+			       padding: 14px 16px;
+			       transition: 0.3s;
+			       font-size: 17px;
+			 background-color: #005285;
+			color: #ffffff;
+			     }
+
+			     /* Change background color of buttons on hover */
+			     .tab button:hover {
+			       background-color: #009ACE;
+			     }
+
+			     /* Create an active/current tablink class */
+			     .tab button.active {
+			       background-color: #009ACE;
+			     }
+
+			     /* Style the tab content */
+			     .tabcontent {
+			       display: none;
+			       padding: 6px 12px;
+			       border-top: none;
+			     }
+
+			     table {
+			       max-width: 100%;
+			       overflow-x: auto;
+			       display: block;
+			       scroll-behavior: auto;
+			     		padding-top: 15px;
+			     		padding-left: 20px;
+			     		padding-bottom: 15px;
+			     }
+
+			     th,
+			     td {
+			       text-align: left;
+			       padding: 8px;
+			       border-bottom: 1px solid #ddd;
+			     }
+
+			     th {
+			       background-color: #008EB5;
+			       color: white;
+			     }
+
+			     tr:nth-child(even) {
+			       background-color: #f2f2f2;
+			     }
+
+			     tr:hover {
+			       background-color: #ddd;
+			     }
+
+			     	  table.dataTable thead th, table.dataTable thead td {
+			     		padding: 10px 10px 10px 10px;
+			     		border-bottom: 1px solid #111;
+			     	}
+
+			.div-links {
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			}
+		</style>
+		<script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
+		<script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
+		<script>
+			     $(document).ready(function() {
+			       // Setup - add a text input to each footer cell
+			       /*  $('#tabela-entidades thead th').each( function (i) {
+			              var title = $('#tabela-entidades thead th').eq( $(this).index() ).text();
+			              $(this).html( '
+
+			     						<input type="text" placeholder="'+title+'" data-index="'+i+'" />' );
+			          } );*/
+			       // DataTable
+			       var table = $('#tabela-entidades').DataTable({
+			         "paging": true,
+			         "ordering": false,
+			         "info": true,
+			"iDisplayLength" : 100,
+			"language": {
+						"search": "Pesquisa:",
+						"Show":"Exibir",
+						"lengthMenu":     "Exibir _MENU_ entidades",
+						"info":           "Exibindo _START_ - _END_ de _TOTAL_ entidades",
+						"paginate": {
+										"first":      "Primeiro",
+										"last":       "Último",
+										"next":       "Próximo",
+										"previous":   "Anterior"
+									}
+						 }
+			       });
+			       // Filter event handler
+			       $(table.table().container()).on('keyup', 'thead input', function() {
+			         // Get the search value and column index
+			         var searchValue = this.value;
+			         var columnIndex = $(this).data('index');
+			         // Perform the search
+			         if (columnIndex === 0) {
+			           table.column(columnIndex).search("(^" + searchValue + "$)", true, false).draw();
+			         } else {
+			           table.column(columnIndex).search(searchValue, true, false).draw();
+			         }
+			       });
+			       // Clear filter event handler
+			       $(table.table().container()).on('keyup', 'thead input', function() {
+			         // Get the search value and column index
+			         var searchValue = this.value;
+			         var columnIndex = $(this).data('index');
+			         if (searchValue === '') {
+			           // Clear all search values and redraw the table
+			           $('thead input').val('');
+			           table.search('').columns().search('').draw();
+			         }
+			       });
+			     });
+		</script>
+	</head>
+
+	<body>
+		<div id="cont" style="width: 95%;padding-left: 20px;padding-top: 20px;">
+			<div class="tab">
+				<button id="btnAmbientes" class="tablinks" onclick="openTab(event, 'ambientes','btnAmbientes')">Ambientes</button>
+				<button id="btnLinks" class="tablinks" onclick="openTab(event, 'links','btnLinks')">Links</button>
+				<button id="btnEntidades" class="tablinks" onclick="openTab(event, 'entidades','btnEntidades')">Entidades</button>
+			</div>
+			<div id="ambientes" class="tabcontent">
+				<div class="row" style="margin-top: 15px;">
+					<div class="col">
+						<div class="card shadow-sm p-3 mb-5 bg-white rounded" style="box-shadow: 0 .325rem .45rem #005387!important;">
+							<p><img src="./img/simhLogo.png" alt="SIMH" /></p>
+							<h4 id="links-dos-ambientes">Links dos ambientes</h4>
+							<div style="margin: 20px 20px 20px 20px;">
+								<h5 id="ci">CI</h5>
+								<a target="_blank" href="http://10.204.1.120:8001/SIMH/" title="SIMH">SIMH</a><br />
+								<a target="_blank" href="http://10.204.1.120:8001/SIMH_BKO/" title="SIMH BKO">SIMH BackOffice</a>
+							</div>
+							<div style="margin: 20px 20px 20px 20px;">
+								<h5 id="dev">DEV</h5>
+								<a target="_blank" href="http://10.204.1.120:7001/SIMH/" title="SIMH">SIMH</a><br />
+								<a target="_blank" href="http://10.204.1.120:7001/SIMH_BKO/" title="SIMH BKO">SIMH BackOffice</a>
+							</div>
+							<div style="margin: 20px 20px 20px 20px;">
+								<h5 id="qlt">QLT</h5>
+								<a target="_blank" href="https://simh-qa.min-saude.pt/" title="SIMH">SIMH</a><br />
+								<a target="_blank" href="https://simh-qa.min-saude.pt/SIMH_BKO/" title="SIMH BKO">SIMH BackOffice</a>
+							</div>
+							<div style="margin: 20px 20px 20px 20px;">
+								<h5 id="prd">PRD</h5>
+								<a target="_blank" href="https://simh.min-saude.pt/" title="SIMH">SIMH</a><br />
+								<a target="_blank" href="https://simh.min-saude.pt/SIMH_BKO/" title="SIMH BKO">SIMH BackOffice</a>
+							</div>
+						</div>
 					</div>
-					
-					<div style="margin: 20px 20px 20px 20px;">
-						<h5 id="qlt">QLT</h5>
-						<a target="_blank" href="https://simh-qa.min-saude.pt/" title="SIMH">SIMH</a><br>
-						<a target="_blank" href="https://simh-qa.min-saude.pt/SIMH_BKO/" title="SIMH BKO">SIMH BackOffice</a>
+					<div class="col">
+						<div class="card shadow-sm p-3 mb-5 bg-white rounded" style="box-shadow: 0 .325rem .45rem #005387!important;">
+							<p><img src="./img/simhfLogo.png" alt="SIMH-FORMACAO" /></p>
+							<h4 id="links-dos-ambientes">Links dos ambientes</h4>
+							<div style="margin: 20px 20px 20px 20px;">
+								<h5 id="ci">CI</h5>
+								<s>SIMH-FORMACAO</s><br />
+								<s>SIMH-FORMACAO BackOffice</s>
+							</div>
+							<div style="margin: 20px 20px 20px 20px;">
+								<h5 id="dev-1">DEV</h5>
+								<a target="_blank" href="http://10.204.1.115:7001/SIMH_FORMACAO/" title="SIMH-FORMACAO">SIMH-FORMACAO</a><br />
+								<a target="_blank" href="http://10.204.1.115:7001/SIMH_FORMACAO_BKO/" title="SIMH-FORMACAO BKO">SIMH-FORMACAO BackOffice</a>
+							</div>
+							<div style="margin: 20px 20px 20px 20px;">
+								<h5 id="qlt-1">QLT</h5>
+								<a target="_blank" href="https://simh-formacao-qa.min-saude.pt/SIMH_FORMACAO/" title="SIMH-FORMACAO">SIMH-FORMACAO</a><br />
+								<a target="_blank" href="https://simh-formacao-qa.min-saude.pt/SIMH_FORMACAO_BKO/" title="SIMH-FORMACAO BKO">SIMH-FORMACAO BackOffice</a>
+							</div>
+							<div style="margin: 20px 20px 20px 20px;">
+								<h5 id="prd-1">PRD</h5>
+								<a target="_blank" href="https://simh-formacao.min-saude.pt/" title="SIMH-FORMACAO">SIMH-FORMACAO</a><br />
+								<a target="_blank" href="https://simh-formacao.min-saude.pt/SIMH_FORMACAO_BKO" title="SIMH-FORMACAO BKO">SIMH-FORMACAO BackOffice</a>
+							</div>
+						</div>
 					</div>
-					
-					<div style="margin: 20px 20px 20px 20px;">
-						<h5 id="prd">PRD</h5>
-						<a target="_blank" href="https://simh.min-saude.pt/" title="SIMH">SIMH</a><br>
-						<a target="_blank" href="https://simh.min-saude.pt/SIMH_BKO/" title="SIMH BKO">SIMH BackOffice</a>
+				</div>
+
+				<div
+					class="row"
+					style="width: 100%;
+    margin-left: 0px;
+    box-shadow: 0 .325rem .45rem #005387!important;
+    height: 100px;"
+				>
+					<div class="col-sm-12" style="margin-bottom: -20px;">
+						<p style="margin-top: 20px;"><img src="./img/spmsLogo.png" alt="SPMS" /></p>
 					</div>
-					
 				</div>
 			</div>
-			
-			<div class="col">
-				<div class="card shadow-sm p-3 mb-5 bg-white rounded " style="box-shadow: 0 .325rem .45rem #005387!important;"> 
-					<p><img src="./img/simhfLogo.png" alt="SIMH-FORMACAO"></p>
-					
-					<h4 id="links-dos-ambientes">Links dos ambientes</h4>
-					
-					<div style="margin: 20px 20px 20px 20px;">
-						<h5 id="ci">CI</h5>
-						<s>SIMH-FORMACAO</s><br>
-						<s>SIMH-FORMACAO BackOffice</s>
+			<div id="links" class="tabcontent">
+				<div class="container">
+					<div class="row" style="height: 400px;">
+						<div class="col-sm-4 div-links">
+							<a href="http://10.204.1.120:8081/nexus/" target="_blank"><img src="./img/nexus200x50.png" border="0" alt="Welcome to the Sonatype Nexus Maven Repository Manager" style="max-width: 200px;" /></a>
+						</div>
+						<div class="col-sm-4 div-links">
+							<a href="http://10.204.1.120:8080/" target="_blank"><img src="./img/jenkins.jpeg" border="0" alt="jenkinsr" style="max-width: 115px;margin-top: -10px;" /></a>
+						</div>
+						<div class="col-sm-4 div-links">
+							<a href="http://10.204.1.120:9000/projects" target="_blank" style=""> <img src="./img/sonarqube.png" border="0" alt="sonar" style="max-width: 275px;margin-top: -7px;" /></a>
+						</div>
+						<div class="col-sm-4 div-links">
+							<a href="https://spmspt.atlassian.net/jira/software/c/projects/SIMH/boards/424" target="_blank" style=""> <img src="./img/jira.png" border="0" alt="jira" style="max-width: 220px;margin-top: -7px;" /></a>
+						</div>
+						<div class="col-sm-4 div-links">
+							<a href="https://spmspt.atlassian.net/wiki/spaces/SCSII/pages/973930824/SIMH+-+Sistema+de+Informa+o+para+a+Morbilidade+Hospitalar" target="_blank" style="">
+								<img src="./img/confluence.png" border="0" alt="confluence" style="max-width: 260px;margin-top: -7px;" />
+							</a>
+						</div>
+						<div class="col-sm-4 div-links">
+							<a
+								href="https://snspt-my.sharepoint.com/personal/vcsilva_acss_min-saude_pt/_layouts/15/onedrive.aspx?csf=1&web=1&e=0sforn&cid=ca3333ef%2D0644%2D49d6%2D8190%2D660bc8d1de06&FolderCTID=0x012000804D012FF3CBA445BBF5526875A37AD5&id=%2Fpersonal%2Fvcsilva%5Facss%5Fmin%2Dsaude%5Fpt%2FDocuments%2FSIMH&view=0"
+								target="_blank"
+								style=""
+							>
+								<img src="./img/documentacao_acss.png" border="0" alt="jira" style="max-width: 100px;margin-top: -7px;" />
+							</a>
+						</div>
 					</div>
-					
-					<div style="margin: 20px 20px 20px 20px;">
-						<h5 id="dev-1">DEV</h5>
-						<a target="_blank" href="http://10.204.1.115:7001/SIMH_FORMACAO/" title="SIMH-FORMACAO">SIMH-FORMACAO</a><br>
-						<a target="_blank" href="http://10.204.1.115:7001/SIMH_FORMACAO_BKO/" title="SIMH-FORMACAO BKO">SIMH-FORMACAO BackOffice</a>
-					</div>
-
-					<div style="margin: 20px 20px 20px 20px;">
-						<h5 id="qlt-1">QLT</h5>
-						<a target="_blank" href="https://simh-formacao-qa.min-saude.pt/SIMH_FORMACAO/" title="SIMH-FORMACAO">SIMH-FORMACAO</a><br>
-						<a target="_blank" href="https://simh-formacao-qa.min-saude.pt/SIMH_FORMACAO_BKO/" title="SIMH-FORMACAO BKO">SIMH-FORMACAO BackOffice</a>
-					</div>
-
-					<div style="margin: 20px 20px 20px 20px;">
-						<h5 id="prd-1">PRD</h5>
-						<a target="_blank" href="https://simh-formacao.min-saude.pt/" title="SIMH-FORMACAO">SIMH-FORMACAO</a><br>
-						<a target="_blank" href="https://simh-formacao.min-saude.pt/SIMH_FORMACAO_BKO" title="SIMH-FORMACAO BKO">SIMH-FORMACAO BackOffice</a>
-					</div>
-					
-
 				</div>
 			</div>
-	
-		</div>
-		<div class="card shadow-sm p-3 mb-5 bg-white rounded " style="margin-top: -30px;box-shadow: 0 .325rem .45rem lightgray !important;"> 
-	
-	<div class="row">
-		<div class="col-sm-4">
-			<h5 id="repositório-de-versões">Repositório de versões</h5>
-			<a href="http://10.204.1.120:8081/nexus/" target="_blank"><img src="./img/nexus200x50.png" border="0" alt="Welcome to the Sonatype Nexus Maven Repository Manager" style="max-width: 140px;"></a>
-			<p style="display: none;">Link do <a href="http://10.204.1.120:8081/nexus/" title="Nexus" target="_blank">Repositório</a>.</p>
-		</div>
-		<div class="col-sm-4">
-			<h5 id="integração-contínua-dos-projetos" style="">CI / CD</h5>
-        		<a href="http://10.204.1.120:8080/" target="_blank"><img src="./img/jenkins.jpeg" border="0" alt="jenkinsr" style="max-width: 65px;margin-top: -10px;"></a>
-			<p style="display: none;">Link da ferramenta de <a href="http://10.204.1.120:8080/" title="Jenkins" target="_blank">Integração Contínua</a>.</p>
-		</div>
-		<div class="col-sm-4">
-        		<h5 id="sonarqube">Code Quality &amp; Code Security</h5>
-			<a href="http://10.204.1.120:9000/projects" target="_blank" style=""><img src="./img/sonarqube.png" border="0" alt="sonar" style="max-width: 220px;margin-top: -7px;"></a>
-			<p style="display: none;">Link do <a href="http://10.204.1.120:9000/projects" title="SonarQube" target="_blank">Repositório</a>.</p>
-		</div>
-		<div class="col-sm-12" style="
-    margin-bottom: -20px;
-">
-			<p style="margin-top: 20px;"><img src="./img/spmsLogo.png" alt="SPMS"></p>
-		</div>
-	</div>
-</div>
+			<div id="entidades" class="tabcontent">
+				<table id="tabela-entidades">
+					<thead>
+						<tr>
+							<th><input type="text" placeholder="ID" data-index="0" style="width: 50px;" /></th>
+							<th><input type="text" placeholder="Descrição" data-index="1" style="width: 500px;" /></th>
+							<th><input type="text" placeholder="SI Fonte" data-index="2" style="width: 100px;" /></th>
+							<th><input type="text" placeholder="Tipo" data-index="3" style="width: 75px;" /></th>
+							<th><input type="text" placeholder="Início SIMH" data-index="4" style="width: 95px;" /></th>
+							<th><input type="text" placeholder="Estado" data-index="5" style="width: 70px;" /></th>
+							<th><input type="text" placeholder="COD_UNIDADE" data-index="6" style="width: 120px;" /></th>
+							<th><input type="text" placeholder="CDC_SERVIDOR" data-index="7" style="width: 125px;" /></th>
+							<th><input type="text" placeholder="ID PIS" data-index="8" style="width: 55px;" /></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>361</td>
+							<td>ARS Algarve</td>
+							<td>Standalone</td>
+							<td>SNS</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>281</td>
+							<td>ARS Centro</td>
+							<td>Standalone</td>
+							<td>SNS</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>321</td>
+							<td>ARS LVT</td>
+							<td>Standalone</td>
+							<td>SNS</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>403</td>
+							<td>ARS Norte</td>
+							<td>Standalone</td>
+							<td>SNS</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>130</td>
+							<td>Administração Central do Sistema de Saúde, I.P.</td>
+							<td>Standalone</td>
+							<td>SNS</td>
+							<td>01-10-2016</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>341</td>
+							<td>Associação Protectora dos Diabéticos de Portugal</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>141</td>
+							<td>CUF Hospitais</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>30-01-2017</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>203</td>
+							<td>CUF Hospital Cascais</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>201</td>
+							<td>CUF Hospital Descobertas</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>202</td>
+							<td>CUF Hospital Infante Santo</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>221</td>
+							<td>CUF Hospital Porto</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>224</td>
+							<td>CUF Hospital Santarém</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>223</td>
+							<td>CUF Hospital Torres Vedras</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>222</td>
+							<td>CUF Hospital Viseu</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>99</td>
+							<td>Centro Hospitalar Barreiro Montijo, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>04-02-2017</td>
+							<td>Ativo</td>
+							<td>3157201</td>
+							<td>124</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>110</td>
+							<td>Centro Hospitalar Psiquiátrico de Lisboa</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>08-02-2017</td>
+							<td>Ativo</td>
+							<td>3117501</td>
+							<td>13</td>
+							<td>26</td>
+						</tr>
+						<tr>
+							<td>101</td>
+							<td>Centro Hospitalar Póvoa de Varzim/Vila do Conde, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>20-05-2017</td>
+							<td>Ativo</td>
+							<td>1137302</td>
+							<td>141</td>
+							<td>63</td>
+						</tr>
+						<tr>
+							<td>98</td>
+							<td>Centro Hospitalar Tondela-Viseu, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>08-03-2017</td>
+							<td>Ativo</td>
+							<td>2187202</td>
+							<td>95</td>
+							<td>41</td>
+						</tr>
+						<tr>
+							<td>102</td>
+							<td>Centro Hospitalar Tâmega e Sousa, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>28-02-2017</td>
+							<td>Ativo</td>
+							<td>1137101</td>
+							<td>140</td>
+							<td>261</td>
+						</tr>
+						<tr>
+							<td>108</td>
+							<td>Centro Hospitalar Universitário Cova da Beira, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>22-03-2017</td>
+							<td>Ativo</td>
+							<td>2057202</td>
+							<td>130</td>
+							<td>141</td>
+						</tr>
+						<tr>
+							<td>22</td>
+							<td>Centro Hospitalar Universitário de Lisboa Central, E.P.E.</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>21-11-2016</td>
+							<td>Ativo</td>
+							<td>3117020</td>
+							<td>127</td>
+							<td>25</td>
+						</tr>
+						<tr>
+							<td>83</td>
+							<td>Centro Hospitalar Universitário de Lisboa Norte, E.P.E.</td>
+							<td>Standalone</td>
+							<td>SNS</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Centro Hospitalar Universitário de S. João, E.P.E.</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>12-10-2016</td>
+							<td>Ativo</td>
+							<td>1137005</td>
+							<td>143</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>95</td>
+							<td>Centro Hospitalar Universitário de Santo António, E.P.E. – CHUP</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>28-02-2017</td>
+							<td>Ativo</td>
+							<td>1137006</td>
+							<td>128</td>
+							<td>221</td>
+						</tr>
+						<tr>
+							<td>92</td>
+							<td>Centro Hospitalar Universitário de Santo António, E.P.E. – HML</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>22-03-2017</td>
+							<td>Ativo</td>
+							<td>1137501</td>
+							<td>138</td>
+							<td>265</td>
+						</tr>
+						<tr>
+							<td>96</td>
+							<td>Centro Hospitalar Universitário do Algarve, EPE - Faro</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>07-04-2017</td>
+							<td>Ativo</td>
+							<td>5087101</td>
+							<td>132</td>
+							<td>203</td>
+						</tr>
+						<tr>
+							<td>181</td>
+							<td>Centro Hospitalar Universitário do Algarve, EPE - Portimão</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>06-04-2017</td>
+							<td>Ativo</td>
+							<td>5087105</td>
+							<td>21</td>
+							<td>102</td>
+						</tr>
+						<tr>
+							<td>100</td>
+							<td>Centro Hospitalar de Entre o Douro e Vouga, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>04-02-2017</td>
+							<td>Ativo</td>
+							<td>2017115</td>
+							<td>154</td>
+							<td>7</td>
+						</tr>
+						<tr>
+							<td>93</td>
+							<td>Centro Hospitalar de Leiria, E.P.E.</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>08-03-2017</td>
+							<td>Ativo</td>
+							<td>2107202</td>
+							<td>159</td>
+							<td>242</td>
+						</tr>
+						<tr>
+							<td>106</td>
+							<td>Centro Hospitalar de Lisboa Ocidental, E.P.E.</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>20-05-2017</td>
+							<td>Ativo</td>
+							<td>3117031</td>
+							<td>105</td>
+							<td>161</td>
+						</tr>
+						<tr>
+							<td>107</td>
+							<td>Centro Hospitalar de Setúbal, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>30-01-2017</td>
+							<td>Ativo</td>
+							<td>3157202</td>
+							<td>106</td>
+							<td>243</td>
+						</tr>
+						<tr>
+							<td>104</td>
+							<td>Centro Hospitalar de Tras-os-Montes e Alto Douro, E.P.E.</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>12-02-2017</td>
+							<td>Ativo</td>
+							<td>1177101</td>
+							<td>153</td>
+							<td>24</td>
+						</tr>
+						<tr>
+							<td>103</td>
+							<td>Centro Hospitalar de Vila Nova de Gaia/Espinho, E.P.E.</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>20-05-2017</td>
+							<td>Ativo</td>
+							<td>1137001</td>
+							<td>133</td>
+							<td>262</td>
+						</tr>
+						<tr>
+							<td>97</td>
+							<td>Centro Hospitalar do Baixo Vouga, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>08-02-2017</td>
+							<td>Ativo</td>
+							<td>2017103</td>
+							<td>122</td>
+							<td>81</td>
+						</tr>
+						<tr>
+							<td>105</td>
+							<td>Centro Hospitalar do Médio Ave, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>04-02-2017</td>
+							<td>Ativo</td>
+							<td>1137108</td>
+							<td>131</td>
+							<td>202</td>
+						</tr>
+						<tr>
+							<td>109</td>
+							<td>Centro Hospitalar do Médio Tejo, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>28-02-2017</td>
+							<td>Ativo</td>
+							<td>3147103</td>
+							<td>149</td>
+							<td>62</td>
+						</tr>
+						<tr>
+							<td>94</td>
+							<td>Centro Hospitalar do Oeste, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>26-01-2017</td>
+							<td>Ativo</td>
+							<td>3117116</td>
+							<td>150</td>
+							<td>61</td>
+						</tr>
+						<tr>
+							<td>82</td>
+							<td>Centro Hospitalar e Universitário de Coimbra, E.P.E.</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>20-05-2017</td>
+							<td>Ativo</td>
+							<td>2067050</td>
+							<td>129</td>
+							<td>27</td>
+						</tr>
+						<tr>
+							<td>401</td>
+							<td>FORMAÇÃO AUDITORIA</td>
+							<td>Standalone</td>
+							<td>SNS</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>381</td>
+							<td>FUTURO CH ALGARVE</td>
+							<td>Standalone</td>
+							<td>SNS</td>
+							<td>-</td>
+							<td>Inativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>442</td>
+							<td>Futura Entidade 2</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>119</td>
+							<td>Hospital Arcebispo João Crisóstomo – Cantanhede</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>12-02-2017</td>
+							<td>Ativo</td>
+							<td>2067301</td>
+							<td>125</td>
+							<td>121</td>
+						</tr>
+						<tr>
+							<td>115</td>
+							<td>Hospital Distrital da Figueira da Foz, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>10-03-2017</td>
+							<td>Ativo</td>
+							<td>2067110</td>
+							<td>94</td>
+							<td>263</td>
+						</tr>
+						<tr>
+							<td>114</td>
+							<td>Hospital Distrital de Santarém, E.P.E.</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>10-03-2017</td>
+							<td>Ativo</td>
+							<td>3147202</td>
+							<td>144</td>
+							<td>181</td>
+						</tr>
+						<tr>
+							<td>86</td>
+							<td>Hospital Dr. Francisco Zagalo - Ovar</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>27-01-2017</td>
+							<td>Ativo</td>
+							<td>2017305</td>
+							<td>139</td>
+							<td>6</td>
+						</tr>
+						<tr>
+							<td>113</td>
+							<td>Hospital Garcia de Orta, E.P.E. - Almada</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>10-03-2017</td>
+							<td>Ativo</td>
+							<td>3157106</td>
+							<td>135</td>
+							<td>264</td>
+						</tr>
+						<tr>
+							<td>111</td>
+							<td>Hospital José Luciano de Castro – Anadia</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>20-05-2017</td>
+							<td>Ativo</td>
+							<td>2017301</td>
+							<td>121</td>
+							<td>267</td>
+						</tr>
+						<tr>
+							<td>162</td>
+							<td>Hospital Ortopédico de SantAna</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>87</td>
+							<td>Hospital Professor Dr. Fernando Fonseca, E.P.E.</td>
+							<td>Standalone</td>
+							<td>SNS</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>127</td>
+							<td>Hospital S. José – Fafe</td>
+							<td>Sonho V1</td>
+							<td>Priv./Social</td>
+							<td>08-02-2017</td>
+							<td>Ativo</td>
+							<td>1037102</td>
+							<td>155</td>
+							<td>244</td>
+						</tr>
+						<tr>
+							<td>117</td>
+							<td>Hospital Santa Maria Maior, E.P.E. - Barcelos</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>03-02-2017</td>
+							<td>Ativo</td>
+							<td>1037105</td>
+							<td>123</td>
+							<td>22</td>
+						</tr>
+						<tr>
+							<td>112</td>
+							<td>Hospital Senhora da Oliveira, E.P.E. - Guimarães</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>30-01-2017</td>
+							<td>Ativo</td>
+							<td>1037103</td>
+							<td>119</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>161</td>
+							<td>Hospital da Fundação Aurélio Amaro Diniz</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>164</td>
+							<td>Hospital da Horta, EPER</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>08-03-2017</td>
+							<td>Ativo</td>
+							<td>6477201</td>
+							<td>161</td>
+							<td>201</td>
+						</tr>
+						<tr>
+							<td>128</td>
+							<td>Hospital da Prelada</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>81</td>
+							<td>Hospital de Braga, E.P.E.</td>
+							<td>Standalone</td>
+							<td>PPP</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>84</td>
+							<td>Hospital de Cascais Dr. José de Almeida</td>
+							<td>Standalone</td>
+							<td>PPP</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>85</td>
+							<td>Hospital de Loures, E.P.E.</td>
+							<td>Standalone</td>
+							<td>PPP</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>261</td>
+							<td>Hospital de Santo Espírito da Ilha Terceira, EPER</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>88</td>
+							<td>Hospital de Vila Franca de Xira, E.P.E.</td>
+							<td>Standalone</td>
+							<td>PPP</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>241</td>
+							<td>Hospital do Divino Espírito Santo de Ponta Delgada, EPER</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>21</td>
+							<td>Hospital do Espírito Santo - Évora, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>20-12-2016</td>
+							<td>Ativo</td>
+							<td>4077201</td>
+							<td>50</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>89</td>
+							<td>Instituto Português Oncologia F. Gentil - Lisboa, E.P.E.</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>19-05-2017</td>
+							<td>Ativo</td>
+							<td>3117401</td>
+							<td>160</td>
+							<td>266</td>
+						</tr>
+						<tr>
+							<td>116</td>
+							<td>Instituto Português Oncologia F. Gentil - Porto, E.P.E.</td>
+							<td>Standalone</td>
+							<td>SNS</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>118</td>
+							<td>Instituto Português Oncologia  F. Gentil - Coimbra, E.P.E.</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>21-09-2019</td>
+							<td>Ativo</td>
+							<td>2067401</td>
+							<td>165</td>
+							<td>321</td>
+						</tr>
+						<tr>
+							<td>90</td>
+							<td>Instituto de Oftalmologia Dr. Gama Pinto</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>26-01-2017</td>
+							<td>Ativo</td>
+							<td>3117019</td>
+							<td>134</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>421</td>
+							<td>Lusíadas Saúde</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>14-01-2021</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>163</td>
+							<td>Santa Casa da Misericórdia de Vila Verde</td>
+							<td>Sonho V1</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>1037315</td>
+							<td>157</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>301</td>
+							<td>Saudaçor</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>129</td>
+							<td>Serviço de Saúde da RAM, EPERAM</td>
+							<td>Standalone</td>
+							<td>SNS</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>402</td>
+							<td>Sessão Demonstrativa</td>
+							<td>Standalone</td>
+							<td>SNS</td>
+							<td>-</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>441</td>
+							<td>Trofa Saúde</td>
+							<td>Standalone</td>
+							<td>Priv./Social</td>
+							<td>20-05-2021</td>
+							<td>Ativo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>124</td>
+							<td>Unidade Local de Saúde da Guarda, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>20-02-2017</td>
+							<td>Ativo</td>
+							<td>2097201</td>
+							<td>136</td>
+							<td>28</td>
+						</tr>
+						<tr>
+							<td>122</td>
+							<td>Unidade Local de Saúde de Castelo Branco, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>08-02-2017</td>
+							<td>Ativo</td>
+							<td>2057101</td>
+							<td>126</td>
+							<td>82</td>
+						</tr>
+						<tr>
+							<td>126</td>
+							<td>Unidade Local de Saúde de Matosinhos, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>04-02-2017</td>
+							<td>Ativo</td>
+							<td>1137103</td>
+							<td>120</td>
+							<td>21</td>
+						</tr>
+						<tr>
+							<td>91</td>
+							<td>Unidade Local de Saúde do Alto Minho, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>27-01-2017</td>
+							<td>Ativo</td>
+							<td>1167101</td>
+							<td>152</td>
+							<td>245</td>
+						</tr>
+						<tr>
+							<td>123</td>
+							<td>Unidade Local de Saúde do Baixo Alentejo, E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>12-02-2017</td>
+							<td>Ativo</td>
+							<td>4028201</td>
+							<td>49</td>
+							<td>23</td>
+						</tr>
+						<tr>
+							<td>120</td>
+							<td>Unidade Local de Saúde do Litoral Alentejano, E.P.E.</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>10-03-2017</td>
+							<td>Ativo</td>
+							<td>3158101</td>
+							<td>48</td>
+							<td>301</td>
+						</tr>
+						<tr>
+							<td>121</td>
+							<td>Unidade Local de Saúde do Nordeste, E.P.E.</td>
+							<td>Sonho V2</td>
+							<td>SNS</td>
+							<td>08-03-2017</td>
+							<td>Ativo</td>
+							<td>1047101</td>
+							<td>151</td>
+							<td>241</td>
+						</tr>
+						<tr>
+							<td>125</td>
+							<td>Unidade Local de Saúde do Norte Alentejano E.P.E.</td>
+							<td>Sonho V1</td>
+							<td>SNS</td>
+							<td>15-01-2017</td>
+							<td>Ativo</td>
+							<td>4127201</td>
+							<td>51</td>
+							<td>101</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<script>
+				function openTab(evt, tabName,idButton) {
+				  var i, tabcontent, tablinks;
+				  tabcontent = document.getElementsByClassName("tabcontent");
+				  for (i = 0; i < tabcontent.length; i++) {
+				    tabcontent[i].style.display = "none";
+				  }
+				  tablinks = document.getElementsByClassName("tablinks");
+				  for (i = 0; i < tablinks.length; i++) {
+				    tablinks[i].className = tablinks[i].className.replace(" active", "");
+				  }
+				  document.getElementById(tabName).style.display = "block";
 
-<!-- Footer -->
-<footer class="page-footer font-small blue">
-
-  <!-- Copyright -->
- 
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
+						  var myElement = document.getElementById(idButton);
 
 
-</body>
-</body></html>
+						  myElement.classList.add("active");
+
+				}
+				var rows = document.querySelectorAll("table tr");
+				for (var i = 0; i < rows.length; i++) {
+				  rows[i].addEventListener("mouseover", function() {
+				    this.style.backgroundColor = "#75d1e0";
+				  });
+				  rows[i].addEventListener("mouseout", function() {
+				    this.style.backgroundColor = "white";
+				  });
+				}
+
+						openTab(event, 'ambientes','btnAmbientes');
+			</script>
+		</div>
+	</body>
+</html>
